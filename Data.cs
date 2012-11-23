@@ -18,8 +18,8 @@ namespace SharedSource.Projects
         public static ID ProjectDetailsReleaseDate = new ID("{88DCB148-BA21-440A-9C33-D94BFEE1B788}");
 
         public static ID ProjectWorkflowReadytoGoLiveState = new ID("{4EC74031-9ADB-44B0-BA25-14F311B2FD6B}");
-        public static ID GlobalProductTemplate = new ID("{E2B7DE50-4B5B-4362-8722-8218637FA78D}");
-        public static ID GlobalproductDefaultWorkflow = new ID("{E975D3BD-3CE7-4C1F-8588-4FA6243F879D}");
+        public static ID GlobalProjectTemplate = new ID("{E2B7DE50-4B5B-4362-8722-8218637FA78D}");
+        public static ID GlobalprojectDefaultWorkflow = new ID("{E975D3BD-3CE7-4C1F-8588-4FA6243F879D}");
 
 
         public static string ProjectRootFolder = "/sitecore/content/Settings/Projects";
