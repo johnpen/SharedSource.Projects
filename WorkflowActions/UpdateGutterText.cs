@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using Sitecore;
-using Sitecore.Data.Items;
-using Sitecore.Data;
-using Sitecore.Diagnostics;
-using Sitecore.Web.UI.Sheer;
-using Sitecore.Shell.Applications.WebEdit;
-using System.Collections.Specialized;
-using Sitecore.Web;
-using Sitecore.Text;
-
-using Sitecore.Shell.Applications.ContentEditor.Gutters;
-
-namespace SharedSource.Projects.WorkflowActions 
+﻿namespace SharedSource.Projects.WorkflowActions 
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using Sitecore;
+    using Sitecore.Data;
+    using Sitecore.Data.Items;
+    using Sitecore.Diagnostics;
+    using Sitecore.Shell.Applications.ContentEditor.Gutters;
+    using Sitecore.Shell.Applications.WebEdit;
+    using Sitecore.Text;
+    using Sitecore.Web;
+    using Sitecore.Web.UI.Sheer;
+
     public class UpdateGutterText : WorkflowState
     {
         protected override GutterIconDescriptor GetIconDescriptor(Item item)
