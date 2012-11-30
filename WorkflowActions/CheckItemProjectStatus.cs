@@ -15,7 +15,7 @@ namespace SharedSource.Projects.WorkflowActions
         {       
             // Item being workflowed
             Item workflowItem = args.DataItem;
-            IWorkflow wf = master.WorkflowProvider.GetWorkflow(workflowItem);
+            IWorkflow wf = this.master.WorkflowProvider.GetWorkflow(workflowItem);
 
             
             if (workflowItem.IsProjectItem())
@@ -30,7 +30,7 @@ namespace SharedSource.Projects.WorkflowActions
                     workflowItem.Editing.EndEdit();
                 }
 
-                wf = master.WorkflowProvider.GetWorkflow(Data.ProjectWorkflow.ToString());
+                wf = this.master.WorkflowProvider.GetWorkflow(Data.ProjectWorkflow.ToString());
                 wf.Start(workflowItem);
             }
             else

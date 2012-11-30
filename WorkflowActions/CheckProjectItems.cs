@@ -23,7 +23,7 @@ namespace SharedSource.Projects.WorkflowActions
         public void Process(WorkflowPipelineArgs args)
         {
             Item workflowItem = args.DataItem;
-            IWorkflow itemwf = master.WorkflowProvider.GetWorkflow(workflowItem);
+            IWorkflow itemwf = this.master.WorkflowProvider.GetWorkflow(workflowItem);
 
             // Only run on project workflow
             if (itemwf.WorkflowID != Data.ProjectWorkflow.ToString())
