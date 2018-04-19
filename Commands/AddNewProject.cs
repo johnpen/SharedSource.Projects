@@ -61,21 +61,5 @@ namespace SharedSource.Projects.Commands
                 args.WaitForPostBack(true);
             }
         }
-
-        private PageEditFieldEditorOptions GetOptions(ClientPipelineArgs args, NameValueCollection form)
-        {
-            Item item = Database.GetItem(ItemUri.Parse(args.Parameters["uri"]));
-            List<FieldDescriptor> fieldDescriptors = new List<FieldDescriptor>();
-            fieldDescriptors.Add(new FieldDescriptor(item, Data.ProjectFieldId.ToString()));
-            List<FieldDescriptor> fieldDescriptors1 = fieldDescriptors;
-            Assert.IsNotNull(item, "item");
-            PageEditFieldEditorOptions pageEditFieldEditorOption = new PageEditFieldEditorOptions(form, fieldDescriptors1);
-            pageEditFieldEditorOption.Title = "Select Project";
-            pageEditFieldEditorOption.Icon = "";
-            pageEditFieldEditorOption.DialogTitle = "Select Project";
-            PageEditFieldEditorOptions pageEditFieldEditorOption1 = pageEditFieldEditorOption;
-            return pageEditFieldEditorOption1;
-        }
-
     }
 }

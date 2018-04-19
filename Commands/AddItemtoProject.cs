@@ -10,6 +10,7 @@ using Sitecore.Shell.Framework.Commands;
 using Sitecore.Text;
 using Sitecore.Web;
 using Sitecore.Web.UI.Sheer;
+using Sitecore.Shell.Applications.ContentEditor;
 
 namespace SharedSource.Projects.Commands
 {
@@ -66,6 +67,18 @@ namespace SharedSource.Projects.Commands
                     string value = fieldDescriptor.Value; 
                     item.Editing.BeginEdit();
                     item.Fields[Data.ProjectFieldId].Value = value;
+
+                    if(string.IsNullOrEmpty(value))
+                    {
+                        // removing project
+                        item.Fields[Sitecore.FieldIDs.ValidFrom].Value = "";
+                    }
+                    else
+                    {
+                        var projectItem = item.Database.GetItem(new ID(value));
+                        item.Fields[Sitecore.FieldIDs.ValidFrom].Value = projectItem[Data.ProjectDetailsReleaseDate];
+                    }
+
                     item.Editing.EndEdit();
 
                     String refresh = String.Format("item:refreshchildren(id={0})", item.Parent.ID);
@@ -79,18 +92,19 @@ namespace SharedSource.Projects.Commands
             }
         }
 
-        private PageEditFieldEditorOptions GetOptions(ClientPipelineArgs args, NameValueCollection form)
+
+       protected  FieldEditorOptions GetOptions(ClientPipelineArgs args, NameValueCollection form)
         {
             Item item = Database.GetItem(ItemUri.Parse(args.Parameters["uri"]));
             List<FieldDescriptor> fieldDescriptors = new List<FieldDescriptor>();
             fieldDescriptors.Add(new FieldDescriptor(item, Data.ProjectFieldId.ToString()));
             List<FieldDescriptor> fieldDescriptors1 = fieldDescriptors;
             Assert.IsNotNull(item, "item");
-            PageEditFieldEditorOptions pageEditFieldEditorOption = new PageEditFieldEditorOptions(form, fieldDescriptors1);
+            FieldEditorOptions pageEditFieldEditorOption = new FieldEditorOptions(fieldDescriptors1);
             pageEditFieldEditorOption.Title = "Select Project";
             pageEditFieldEditorOption.Icon = "";
             pageEditFieldEditorOption.DialogTitle = "Select Project";
-            PageEditFieldEditorOptions pageEditFieldEditorOption1 = pageEditFieldEditorOption;
+            FieldEditorOptions pageEditFieldEditorOption1 = pageEditFieldEditorOption;
             return pageEditFieldEditorOption1;
         }
     }

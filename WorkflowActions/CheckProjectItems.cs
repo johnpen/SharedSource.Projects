@@ -36,6 +36,7 @@ namespace SharedSource.Projects.WorkflowActions
 
             // Get the project defintion
             var projectDefinition = master.GetItem(workflowItem.Fields[Data.ProjectFieldId].Value);
+            if (projectDefinition == null) { return; }
             DateField projectReleaseDate = projectDefinition.Fields[Data.ProjectDetailsReleaseDate];            
 
             // If there are no other items in the project, and it's after the project release date, continue the workflow.
